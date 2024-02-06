@@ -2,16 +2,16 @@
 
 * {
     font-family: "Comfortaa", sans-serif;
+    z-index: 2;
 }
 
 body {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     height: 100vh;
     margin: 0;
-    background: linear-gradient(45deg, #252b30, #080b0e);
+    background: linear-gradient(45deg, #080b0e, #251e27);
     color: #fff;
 }
 
@@ -19,6 +19,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.logo {
+    width: 150px;
+    margin-bottom: 20px;
 }
 
 button {
@@ -30,7 +35,7 @@ button {
     border: unset;
     border-radius: 10px;
     cursor: pointer;
-    width: 100%;
+    width: 80%;
     height: 60px;
 }
 
@@ -39,18 +44,19 @@ button {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #212427;
+    background-color: #161616;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid #ffffff13;
 }
 
 textarea {
     width: 230px;
-    height: 340px;
+    height: 200px;
     margin-top: 10px;
     resize: none;
-    background-color: #444;
+    background-color: #252525;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -59,6 +65,32 @@ textarea {
     overflow-y: auto;
     scrollbar-color: #777777 #343a40;
     outline: none;
+}
+
+h2 {
+    text-transform: uppercase;
+    font-size: 100px;
+    color: #6c3f778f;
+    text-shadow: #ffc0fa48 1px 1px 60px;
+    position: absolute;
+    z-index: 0;
+    margin: 0 780px 100px 0;
+}
+
+.palka {
+    background-color: #1ee9e963;
+    width: 1400px;
+    height: 6px;
+    position: absolute;
+    border-radius: 100%;
+    z-index: 0;
+    transform: rotate(-15deg);
+    margin-top: 100px;
+    box-shadow: #1ee9e9f5 1px 1px 60px;
+}
+
+h2:nth-child(3) {
+    margin: 400px 0 0 760px;
 }
 
 #copyButton {
