@@ -3994,7 +3994,7 @@ function getRandomStartMessage(name) {
         startMessages[Math.floor(Math.random() * startMessages.length)].replace("[Name]", name) + randomSymbol
     );
 }
-function getRandomEndMessage() {
+function getRandomEndMessage(link) {
     const endMessages = [
         "Hey! Just a heads up, I'm not on Tinder often, but you'll get faster responses from me on Instagram and OnlyFans. Let's chat there!",
         "Hi! If you're messaging me here, I might not see it right away. For quicker replies, find me on Instagram or OnlyFans. Let's connect!",
@@ -4021,7 +4021,7 @@ function getRandomEndMessage() {
     const symbols = ["!", "!!", ")", "!)", "!!)", "XD", ""];
     const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
 
-    return endMessages[Math.floor(Math.random() * endMessages.length)] + randomSymbol;
+    return endMessages[Math.floor(Math.random() * endMessages.length)] + randomSymbol + "\n" + link;
 }
 
 document.getElementById("getButton2").addEventListener("click", function () {
@@ -4037,7 +4037,13 @@ document.getElementById("getName").addEventListener("input", function () {
 
 document.getElementById("getButton3").addEventListener("click", function () {
     const resultText = document.getElementById("resultText3");
-    resultText.value = getRandomEndMessage();
+    const link = document.getElementById("getLink").value;
+    resultText.value = getRandomEndMessage(link);
+});
+
+document.getElementById("getLink").addEventListener("input", function () {
+    const getButton3 = document.getElementById("getButton3");
+    getButton3.disabled = this.value.trim() === "";
 });
 ///////////////
 document.getElementById("copyButton1").addEventListener("click", async function () {
