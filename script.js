@@ -1,5 +1,4 @@
-document.getElementById("getButton").addEventListener("click", function () {
-    // Создаем массивы с вручную написанными строками
+document.getElementById("getButton1").addEventListener("click", function () {
     const google_1 = [
         "https://www.pornhub.com/",
         "https://www.livejasmin.com/en/girls/",
@@ -3775,13 +3774,8 @@ document.getElementById("getButton").addEventListener("click", function () {
         "https://www.match.com/",
     ];
 
-    const resultContainer = document.getElementById("resultContainer");
-    resultContainer.classList.remove("hidden");
-
-    const resultText = document.getElementById("resultText");
+    const resultText = document.getElementById("resultText1");
     resultText.value = "";
-
-    // Формируем текст сразу и выводим
     resultText.value += "\n" + main.join("\n");
     resultText.value += "\n" + getRandomElements(facebook, 13).join("\n");
     resultText.value += "\n" + getRandomElements(google_1, 4).join("\n");
@@ -3789,8 +3783,285 @@ document.getElementById("getButton").addEventListener("click", function () {
     resultText.value += "\n" + getRandomElements(google_3, 4).join("\n");
 });
 
-document.getElementById("copyButton").addEventListener("click", async function () {
-    const resultText = document.getElementById("resultText");
+function getRandomStartMessage(name) {
+    const startMessages = [
+        "Hey [Name], how's your day going?",
+        "Hi [Name], what's your favorite way to unwind after a long day?",
+        "Hey [Name], do you have any exciting plans for the weekend?",
+        "Hey [Name], if you could instantly become an expert in any subject, what would it be?",
+        "Hey [Name], if you could travel anywhere right now, where would you go?",
+        "Hi [Name], what's the most adventurous thing you've ever done?",
+        "Hey [Name], what's your go-to comfort food?",
+        "Hi [Name], are you a morning person or a night owl?",
+        "Hey [Name], do you prefer staying in or going out on weekends?",
+        "Hi [Name], what's the last book you read that you couldn't put down?",
+        "Hey [Name], what's your favorite movie genre?",
+        "Hi [Name], are you a dog person or a cat person?",
+        "Hey [Name], if you could have dinner with any historical figure, who would it be?",
+        "Hi [Name], what's your idea of a perfect date?",
+        "Hey [Name], what's the best piece of advice you've ever received?",
+        "Hi [Name], what's something on your bucket list that you haven't checked off yet?",
+        "Hey [Name], do you enjoy cooking? If so, what's your signature dish?",
+        "Hi [Name], what's your favorite way to spend a lazy Sunday?",
+        "Hey [Name], what's your favorite thing about where you live?",
+        "Hi [Name], do you have any hidden talents?",
+        "Hey [Name], what's the most spontaneous thing you've ever done?",
+        "Hi [Name], do you prefer beach vacations or mountain getaways?",
+        "Hey [Name], what's your favorite season and why?",
+        "Hi [Name], if you could learn any skill overnight, what would it be?",
+        "Hey [Name], what's your guilty pleasure TV show?",
+        "Hi [Name], do you believe in horoscopes?",
+        "Hey [Name], what's your favorite type of cuisine?",
+        "Hi [Name], what's the last song you listened to on repeat?",
+        "Hey [Name], what's something you're passionate about?",
+        "Hi [Name], do you have any phobias?",
+        "Hey [Name], if you could have any superpower, what would it be?",
+        "Hi [Name], what's your favorite childhood memory?",
+        "Hey [Name], do you prefer texting or talking on the phone?",
+        "Hi [Name], what's the most spontaneous trip you've ever taken?",
+        "Hey [Name], what's your favorite way to stay active?",
+        "Hi [Name], do you have any pets?",
+        "Hey [Name], what's the best piece of advice you've ever received from a family member?",
+        "Hi [Name], do you have any favorite podcasts?",
+        "Hey [Name], what's your favorite thing to do on a rainy day?",
+        "Hi [Name], do you have any hobbies that you're passionate about?",
+        "Hey [Name], what's your favorite holiday and why?",
+        "Hi [Name], do you have any phobias or irrational fears?",
+        "Hey [Name], what's your dream job?",
+        "Hi [Name], do you prefer coffee or tea?",
+        "Hey [Name], what's the most memorable concert you've ever been to?",
+        "Hi [Name], do you prefer indoor or outdoor activities?",
+        "Hey [Name], what's something on your bucket list that you're determined to check off soon?",
+        "Hi [Name], what's your favorite way to de-stress?",
+        "Hey [Name], what's your favorite thing about yourself?",
+        "Hi [Name], do you enjoy traveling? If so, what's your favorite destination so far?",
+        "Hey [Name], what's your favorite board game or card game?",
+        "Hi [Name], what's the most interesting place you've ever visited?",
+        "Hey [Name], what's your favorite way to start the day?",
+        "Hi [Name], do you have any favorite quotes or mantras?",
+        "Hey [Name], what's your favorite app on your phone?",
+        "Hi [Name], do you prefer sweet or savory snacks?",
+        "Hey [Name], what's the last thing that made you laugh out loud?",
+        "Hi [Name], what's your favorite childhood TV show?",
+        "Hey [Name], what's the most meaningful gift you've ever received?",
+        "Hi [Name], do you have any hidden talents or party tricks?",
+        "Hey [Name], what's your favorite thing to do when you have free time?",
+        "Hi [Name], do you have any favorite YouTube channels?",
+        "Hey [Name], what's the best piece of advice you've ever received from a friend?",
+        "Hi [Name], do you enjoy cooking? If so, what's your specialty dish?",
+        "Hey [Name], what's your favorite type of music to listen to?",
+        "Hi [Name], what's the last movie you watched that you really enjoyed?",
+        "Hey [Name], what's your favorite way to stay active and healthy?",
+        "Hi [Name], do you have any favorite local spots to hang out?",
+        "Hey [Name], what's the most memorable dream you've ever had?",
+        "Hi [Name], what's your favorite way to spend a Friday night?",
+        "Hey [Name], if you could meet any celebrity, who would it be?",
+        "Hi [Name], what's your favorite thing to do in your downtime?",
+        "Hey [Name], do you have any favorite sports teams?",
+        "Hi [Name], what's your favorite way to relax after a stressful day?",
+        "Hey [Name], do you have any favorite TV shows you're currently binge-watching?",
+        "Hi [Name], what's your favorite type of cuisine to cook or eat?",
+        "Hey [Name], what's your favorite memory from your childhood?",
+        "Hi [Name], do you have any favorite books or authors?",
+        "Hey [Name], what's your idea of a perfect weekend getaway?",
+        "Hi [Name], what's the most interesting fact about yourself?",
+        "Hey [Name], what's your favorite way to spend a rainy day?",
+        "Hi [Name], do you enjoy outdoor activities like hiking or camping?",
+        "Hey [Name], what's your favorite holiday tradition?",
+        "Hi [Name], what's the last thing that inspired you?",
+        "Hey [Name], do you have any favorite movies or TV shows from your childhood?",
+        "Hi [Name], what's the most adventurous thing you've ever done?",
+        "Hey [Name], what's your favorite thing about your job or career?",
+        "Hi [Name], what's the most memorable concert you've ever been to?",
+        "Hey [Name], what's your favorite way to spend a lazy Sunday?",
+        "Hi [Name], what's something you've always wanted to learn or try?",
+        "Hey [Name], do you have any favorite hobbies or interests?",
+        "Hi [Name], what's your favorite thing to do when you need to relax?",
+        "Hey [Name], do you enjoy traveling? If so, what's your favorite destination?",
+        "Hi [Name], what's your favorite type of cuisine?",
+        "Hey [Name], what's the best piece of advice you've ever received?",
+        "Hi [Name], do you have any favorite podcasts or audiobooks?",
+        "Hey [Name], what's your favorite way to start the day?",
+        "Hi [Name], do you have any pets? If so, what are their names?",
+        "Hey [Name], what's the most spontaneous thing you've ever done?",
+        "Hi [Name], what's your favorite way to unwind after a long day?",
+        "Hey [Name], what's your favorite way to spend a Saturday afternoon?",
+        "Hi [Name], if you could have any exotic pet, what would it be?",
+        "Hey [Name], what's your go-to karaoke song?",
+        "Hi [Name], do you have any favorite local restaurants?",
+        "Hey [Name], what's the last TV show that you binge-watched?",
+        "Hi [Name], what's your favorite outdoor activity?",
+        "Hey [Name], what's your favorite board game to play with friends?",
+        "Hi [Name], if you could live in any era, past or future, which would you choose?",
+        "Hey [Name], what's your favorite way to stay motivated?",
+        "Hi [Name], do you have any favorite childhood cartoons?",
+        "Hey [Name], what's your most prized possession?",
+        "Hi [Name], if you could master any skill instantly, what would it be?",
+        "Hey [Name], what's your favorite thing about yourself?",
+        "Hi [Name], do you prefer sunrise or sunset?",
+        "Hey [Name], what's your favorite dessert?",
+        "Hi [Name], what's the best concert you've ever attended?",
+        "Hey [Name], if you could have any job for a day, what would it be?",
+        "Hi [Name], do you believe in aliens?",
+        "Hey [Name], what's your favorite holiday memory?",
+        "Hi [Name], what's the last dream you remember having?",
+        "Hey [Name], do you have any favorite quotes?",
+        "Hi [Name], what's your favorite way to stay connected with friends?",
+        "Hey [Name], if you could only eat one cuisine for the rest of your life, what would it be?",
+        "Hi [Name], what's your favorite outdoor adventure you've ever been on?",
+        "Hey [Name], what's your favorite childhood book?",
+        "Hi [Name], do you have any favorite documentaries?",
+        "Hey [Name], what's your favorite thing to do on a Friday night?",
+        "Hi [Name], if you could meet any historical figure, who would it be?",
+        "Hey [Name], what's your favorite way to relax and unwind?",
+        "Hi [Name], what's your most-used emoji?",
+        "Hey [Name], what's your favorite type of cuisine to cook at home?",
+        "Hi [Name], do you have any favorite sports to watch or play?",
+        "Hey [Name], what's your favorite memory from school?",
+        "Hi [Name], if you could have any animal as a pet, what would it be?",
+        "Hey [Name], what's the most interesting fact you know?",
+        "Hi [Name], what's your favorite thing about where you grew up?",
+        "Hey [Name], what's your favorite way to spend a Sunday morning?",
+        "Hi [Name], what's your favorite way to spend a rainy day indoors?",
+        "Hey [Name], if you could have any talent, what would it be?",
+        "Hi [Name], what's your favorite thing to do when you're feeling creative?",
+        "Hey [Name], what's your favorite type of cuisine to explore in a new city?",
+        "Hi [Name], do you have any favorite podcasts you listen to regularly?",
+        "Hey [Name], what's your favorite memory with your best friend?",
+        "Hi [Name], what's your favorite thing about yourself that might surprise others?",
+        "Hey [Name], what's the most adventurous food you've ever tried?",
+        "Hi [Name], do you have any favorite quotes that inspire you?",
+        "Hey [Name], what's your favorite way to spend a night out with friends?",
+        "Hi [Name], if you could have any career, no limitations, what would it be?",
+        "Hey [Name], what's the most beautiful place you've ever visited?",
+        "Hi [Name], what's your favorite thing about traveling?",
+        "Hey [Name], what's your favorite way to spend a day off?",
+        "Hi [Name], if you could be fluent in any language, which would you choose?",
+        "Hey [Name], what's your favorite way to exercise?",
+        "Hi [Name], do you have any favorite apps on your phone?",
+        "Hey [Name], what's your favorite way to learn something new?",
+        "Hi [Name], what's the most valuable lesson you've learned in life so far?",
+        "Hey [Name], what's your favorite way to spend a summer day?",
+        "Hi [Name], if you could have any superpower, what would it be and why?",
+        "Hey [Name], what's your favorite way to spend a night in?",
+        "Hi [Name], what's your favorite childhood memory involving food?",
+        "Hey [Name], what's your favorite way to show someone you care about them?",
+        "Hi [Name], what's your favorite thing to do when you're feeling nostalgic?",
+        "Hey [Name], if you could live anywhere in the world for a year, where would you choose?",
+        "Hi [Name], what's your favorite way to spend a Saturday night?",
+        "Hey [Name], what's your favorite thing to do on a lazy Sunday afternoon?",
+        "Hi [Name], what's the most interesting fact about yourself that not many people know?",
+        "Hey [Name], what's your favorite way to spend a Saturday night?",
+        "Hi [Name], what's your favorite thing to do on a lazy Sunday afternoon?",
+        "Hey [Name], if you could have any career besides the one you have now, what would it be?",
+        "Hi [Name], what's your favorite type of weather?",
+        "Hey [Name], what's your favorite way to spend a rainy day indoors?",
+        "Hi [Name], what's the most adventurous thing you've ever done on a whim?",
+        "Hey [Name], what's your favorite thing about being single?",
+        "Hi [Name], what's your favorite way to spend time alone?",
+        "Hey [Name], if you could have dinner with any fictional character, who would it be?",
+        "Hi [Name], what's your favorite way to celebrate a special occasion?",
+        "Hey [Name], what's your favorite way to spend a night in?",
+        "Hi [Name], what's your favorite childhood memory involving food?",
+        "Hey [Name], what's your favorite way to show someone you care about them?",
+        "Hi [Name], what's your favorite thing to do when you're feeling nostalgic?",
+        "Hey [Name], if you could live anywhere in the world for a year, where would you choose?",
+        "Hi [Name], what's your favorite way to spend a Saturday night?",
+        "Hey [Name], what's your favorite thing to do on a lazy Sunday afternoon?",
+        "Hi [Name], what's the most interesting fact about yourself that not many people know?",
+        "Hey [Name], what's your favorite way to spend a Saturday night?",
+        "Hi [Name], what's your favorite thing to do on a lazy Sunday afternoon?",
+        "Hey [Name], if you could have any career besides the one you have now, what would it be?",
+        "Hi [Name], what's your favorite type of weather?",
+        "Hey [Name], what's your favorite way to spend a day off?",
+        "Hi [Name], if you could travel back in time to any historical event, which would you choose?",
+        "Hey [Name], what's your favorite hobby to do in your free time?",
+        "Hi [Name], if you could only eat one cuisine for the rest of your life, what would it be?",
+        "Hey [Name], what's your favorite way to unwind after a long day?",
+        "Hi [Name], if you could learn any new skill instantly, what would it be?",
+        "Hey [Name], what's your favorite way to stay active and healthy?",
+        "Hi [Name], if you could have any animal as a pet, what would it be?",
+        "Hey [Name], what's your favorite childhood memory involving nature?",
+        "Hi [Name], if you could have any job in the world for one week, what would it be?",
+        "Hey [Name], what's your favorite way to spend quality time with friends?",
+        "Hi [Name], if you could have any superpower, what would it be and why?",
+    ];
+
+    const symbols = ["!", "?", "??", "!!", "!?", "??!", "?!!", ")", "!)", "?)", "??)"];
+    const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
+
+    return (
+        startMessages[Math.floor(Math.random() * startMessages.length)].replace("[Name]", name) + randomSymbol
+    );
+}
+function getRandomEndMessage() {
+    const endMessages = [
+        "Hey! Just a heads up, I'm not on Tinder often, but you'll get faster responses from me on Instagram and OnlyFans. Let's chat there!",
+        "Hi! If you're messaging me here, I might not see it right away. For quicker replies, find me on Instagram or OnlyFans. Let's connect!",
+        "Hey there! I'm not very active on Tinder, but you'll catch me more often on Instagram and OnlyFans. Shoot me a message there for faster responses!",
+        "Hi! If you're waiting for a reply here, it might take a while. I'm more responsive on Instagram and OnlyFans. Let's chat there!",
+        "Hey! I don't check Tinder frequently, so for faster responses, hit me up on Instagram or OnlyFans. Looking forward to chatting with you!",
+        "Hi there! If you're messaging me on Tinder, I might miss it. Reach out to me on Instagram or OnlyFans for quicker replies. Let's talk!",
+        "Hey! I'm not always active on Tinder, but you can find me on Instagram and OnlyFans for faster responses. Drop me a message there!",
+        "Hi! Just so you know, I'm rarely on Tinder. For faster replies, find me on Instagram or OnlyFans. Let's chat there instead!",
+        "Hey there! If you're messaging me here, it might take a while for me to see it. For quicker responses, reach out to me on Instagram or OnlyFans!",
+        "Hi! I'm not the most active on Tinder, so if you want to chat sooner, find me on Instagram or OnlyFans. Let's connect there!",
+        "Hey! While I do pop into Tinder occasionally, you'll find me much more active and responsive on Instagram and OnlyFans. Let's chat there!",
+        "Hi! If you're messaging me here, keep in mind I'm not always quick to respond on Tinder. Drop me a line on Instagram or OnlyFans for a faster reply!",
+        "Hey there! If you're looking for speedy replies, Instagram and OnlyFans are the places to catch me. Let's continue our conversation there!",
+        "Hi! While I do check Tinder sporadically, you'll have better luck reaching me promptly on Instagram or OnlyFans. Looking forward to chatting further!",
+        "Hey! I'm not glued to Tinder, but you'll catch me more reliably on Instagram and OnlyFans. Feel free to shoot me a message there for a quicker response!",
+        "Hi there! Don't fret if I'm not quick to reply here – I'm much more active on Instagram and OnlyFans. Let's keep the conversation flowing there!",
+        "Hey! While I may not be the most active on Tinder, you can count on finding me readily available on Instagram and OnlyFans. Let's connect there for faster communication!",
+        "Hi! Tinder isn't my primary hangout, but you'll find me ready to chat on Instagram and OnlyFans. Let's continue our conversation there!",
+        "Hey there! Looking for faster responses? Instagram and OnlyFans are where I'm at most of the time. Let's chat there and keep the conversation going!",
+        "Hi! While I do dip into Tinder occasionally, you'll find me more consistently responsive on Instagram and OnlyFans. Let's move the conversation there for quicker interaction!",
+    ];
+
+    const symbols = ["!", "!!", ")", "!)", "!!)", "XD", ""];
+    const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
+
+    return endMessages[Math.floor(Math.random() * endMessages.length)] + randomSymbol;
+}
+
+document.getElementById("getButton2").addEventListener("click", function () {
+    const resultText = document.getElementById("resultText2");
+    const inputName = document.getElementById("getName").value;
+    resultText.value = getRandomStartMessage(inputName);
+});
+
+document.getElementById("getName").addEventListener("input", function () {
+    const getButton2 = document.getElementById("getButton2");
+    getButton2.disabled = this.value.trim() === "";
+});
+
+document.getElementById("getButton3").addEventListener("click", function () {
+    const resultText = document.getElementById("resultText3");
+    resultText.value = getRandomEndMessage();
+});
+///////////////
+document.getElementById("copyButton1").addEventListener("click", async function () {
+    const resultText = document.getElementById("resultText1");
+
+    try {
+        await navigator.clipboard.writeText(resultText.value);
+        showCopiedMessage();
+    } catch (err) {
+        console.error("Unable to copy text to clipboard", err);
+    }
+});
+document.getElementById("copyButton2").addEventListener("click", async function () {
+    const resultText = document.getElementById("resultText2");
+
+    try {
+        await navigator.clipboard.writeText(resultText.value);
+        showCopiedMessage();
+    } catch (err) {
+        console.error("Unable to copy text to clipboard", err);
+    }
+});
+document.getElementById("copyButton3").addEventListener("click", async function () {
+    const resultText = document.getElementById("resultText3");
 
     try {
         await navigator.clipboard.writeText(resultText.value);

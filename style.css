@@ -22,21 +22,19 @@ body {
 }
 
 .logo {
-    width: 150px;
-    margin-bottom: 20px;
+    width: 80px;
+    margin-bottom: 15px;
 }
 
 button {
-    font-size: 22px;
-    padding: 10px;
-    margin-bottom: 20px;
+    font-size: 14px;
     background-color: #6c3f77;
     color: #fff;
     border: unset;
     border-radius: 10px;
     cursor: pointer;
-    width: 80%;
-    height: 60px;
+    width: 120px;
+    height: 40px;
 }
 
 #resultContainer {
@@ -49,38 +47,29 @@ button {
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     border: 1px solid #ffffff13;
+    margin-top: 15px;
 }
 
 textarea {
-    width: 230px;
+    width: 170px;
     height: 200px;
     margin-top: 10px;
     resize: none;
-    background-color: #252525;
+    background-color: #161616;
     color: #fff;
     border: none;
     border-radius: 5px;
     padding: 20px;
-    font-size: 14px;
+    font-size: 12px;
     overflow-y: auto;
     scrollbar-color: #777777 #343a40;
     outline: none;
 }
 
-h2 {
-    text-transform: uppercase;
-    font-size: 100px;
-    color: #6c3f778f;
-    text-shadow: #ffc0fa48 1px 1px 60px;
-    position: absolute;
-    z-index: 0;
-    margin: 0 780px 100px 0;
-}
-
 .palka {
     background-color: #1ee9e963;
-    width: 1400px;
-    height: 6px;
+    width: 1000px;
+    height: 8px;
     position: absolute;
     border-radius: 100%;
     z-index: 0;
@@ -93,17 +82,22 @@ h2:nth-child(3) {
     margin: 400px 0 0 760px;
 }
 
-#copyButton {
-    margin-top: 10px;
-    padding: 8px;
+.copyButton {
     background-color: #777777;
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
     width: 70px;
-    height: 40px;
-    font-size: 16px;
+    height: 30px;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#getButton2:disabled {
+    cursor: not-allowed;
 }
 
 textarea::-webkit-scrollbar {
@@ -144,4 +138,31 @@ textarea::-webkit-scrollbar-thumb {
 
 .google_3 {
     color: #fbbc05;
+}
+
+.section {
+    display: flex;
+    justify-content: center;
+    column-gap: 30px;
+}
+
+.input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ffffff13;
+    height: 30px;
+    border-radius: 5px;
+}
+
+#getName {
+    background-color: #161616;
+    color: white;
+    border: none;
+    outline: none;
+    height: 25px;
+    border-radius: 0;
+    width: 80px;
+    font-size: 12px;
+    padding-left: 10px;
 }
