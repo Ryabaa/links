@@ -4056,7 +4056,7 @@ document.getElementById("getLink").addEventListener("input", function () {
 });
 ///////////////
 document.getElementById("copyButton1").addEventListener("click", async function () {
-    const linksArr = [].concat(randFacebook, randGoogle_1, randGoogle_2, randGoogle_3);
+    const linksArr = [].concat(main, randFacebook, randGoogle_1, randGoogle_2, randGoogle_3);
     const copyText = `return JSON.stringify(${JSON.stringify(linksArr)}.sort(() => .5 - Math.random()));`;
 
     try {
